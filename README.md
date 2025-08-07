@@ -1,6 +1,6 @@
 # Protostar Solutions
 
-**Author: Naksh Rathore**
+**Author: Naksh Rathore**<br />
 **Date Created: August 6, 2025**
 
 ## Disclaimer
