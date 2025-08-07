@@ -58,7 +58,7 @@ Result: `you have changed the 'modified' variable`
 
 ## Resources
 
-* (C Code)[https://exploit.education/protostar/stack-zero/]
-* (Video Walkthrough from LiveOverflow)[https://www.youtube.com/watch?v=T03idxny9jE&ab_channel=LiveOverflow]
-* (Wikipedia Article on Buffer Overflow)[https://en.wikipedia.org/wiki/Buffer_overflow]
-* (Wikipedia Article on the Stack)[https://en.wikipedia.org/wiki/Stack-based_memory_allocation]
+* [C Code](https://exploit.education/protostar/stack-zero/)
+* [Video Walkthrough from LiveOverflow](https://www.youtube.com/watch?v=T03idxny9jE&ab_channel=LiveOverflow)
+* [Wikipedia Article on Buffer Overflow](https://en.wikipedia.org/wiki/Buffer_overflow)
+* [Wikipedia Article on the Stack](https://en.wikipedia.org/wiki/Stack-based_memory_allocation)
