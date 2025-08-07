@@ -15,9 +15,11 @@ These **CTFs are a great, structured way to learn the basics of binary exploitat
 
 ## Layout
 
-**Each challenge has two files**, helping you out on your exploitation journey:
+**Each challenge has three files**, helping you out on your exploitation journey:
 
 * `exploit.py`: A Python2 (Protostar does not support Python3) file that exploits the binary. Every memory address will be the same since [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization) is disabled on Protostar.
+
+* `vuln_code.c`: The vulnerable code you need to exploit with `exploit.py`
 
 * `solution.md`: A `.md` file containing every single step to get there, also containing resources for things like shellcode and other solutions.
 
