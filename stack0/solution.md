@@ -40,7 +40,7 @@ This C program has a `char buffer[64]`, and a `volatile int modified`. Then it g
 
 Now again you may be thinking how will modified be not zero? It is never set to anything but zero. That is where the buffer overflow attack comes in! **If we can fill up** `buffer`, `modified` **is right behind it on the stack**, so now we have access to change `modified` and complete the CTF!
 
-Ok, let's try it! So first of all, `buffer` holds 64 bytes. So we have to enter **64 bytes of input, then whatever we what** `modified` **to be after**.
+Ok, let's try it! So first of all, `buffer` holds 64 bytes. So we have to enter **64 bytes of input, then whatever we want** `modified` **to be after**.
 
 The program should look something like this (save it in `/tmp`):
 
