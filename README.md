@@ -5,7 +5,7 @@
 
 ## Disclaimer
 
-These resources are *only* **meant for ethical hacking**, unethical hacking is **strictly forbidden** and can lead to criminal charges. **Only hack a environment or program if you are given permission**, like a pen test or CTF.
+These resources are *only* **meant for ethical hacking**, unethical hacking is **strictly forbidden** and can lead to criminal charges. **Only hack an environment or program if you are given permission**, like a pen test or CTF.
 
 ## Overview
 
