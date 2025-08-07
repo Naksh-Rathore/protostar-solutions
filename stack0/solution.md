@@ -6,7 +6,7 @@ This level introduces the concept that memory can be accessed outside of its all
 
 This level is at /opt/protostar/bin/stack0
 
-```> [!CAUTION]
+```c
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
