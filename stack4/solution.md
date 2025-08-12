@@ -39,10 +39,27 @@ You may be wondering, how do we do this. The way to do it is by using something 
 that **tells the program where to resume execution** (the next instruction) after a **function call completes**. At the end of a function call, a `ret` **instruction is
 always placed at the end**. What the `ret` instruction does is **change EIP to the return address**, then **pop the return address** off of the stack.
 
-## Exploit
+## Vulnerability
 
 *Again*, you may be asking how do we use this to go the the `win()` function. The answer lies in **overflowing the stack values until we reach the return address, then
-changing it**. But one of the hints were that **EIP (Return Address) is not directly after the end of buffer**. So let's throw a long string at it in GDB.
+changing it**. But one of the hints were that **EIP (Return Address) is not directly after the end of buffer because of padding and compiler optimizations**. 
+
+So let's throw a long string at it in GDB.
+
+## Stack Visualization
+
+Here is a **visual** of the stack
+
+```
+[ Buffer (64 bytes) ]
+[ Saved EBP (4 bytes) ]
+[ Return Address (4 bytes) ]
+[ Other Stuff ]
+```
+
+Remember, the byte amount can **shift** due to compiler optimizations, stack misalignments, and padding.
+
+## Exploit
 
 **TO DO**
 
@@ -50,3 +67,4 @@ changing it**. But one of the hints were that **EIP (Return Address) is not dire
 
 * [C Code](https://exploit.education/protostar/stack-four/)
 * [Geeks for Geeks Article on Return Addresses](https://www.geeksforgeeks.org/dsa/how-is-return-address-specified-in-stack/)
+
