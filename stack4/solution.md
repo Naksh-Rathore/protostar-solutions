@@ -44,8 +44,6 @@ always placed at the end**. What the `ret` instruction does is **change EIP to t
 *Again*, you may be asking how do we use this to go the the `win()` function. The answer lies in **overflowing the stack values until we reach the return address, then
 changing it**. But one of the hints were that **EIP (Return Address) is not directly after the end of buffer because of padding and compiler optimizations**. 
 
-So let's throw a long string at it in GDB.
-
 ## Stack Visualization
 
 Here is a **visual** of the stack
@@ -67,4 +65,5 @@ Remember, the byte amount can **shift** due to compiler optimizations, stack mis
 
 * [C Code](https://exploit.education/protostar/stack-four/)
 * [Geeks for Geeks Article on Return Addresses](https://www.geeksforgeeks.org/dsa/how-is-return-address-specified-in-stack/)
+
 
