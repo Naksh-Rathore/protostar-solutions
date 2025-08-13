@@ -41,7 +41,7 @@ always placed at the end**. What the `ret` instruction does is **change EIP to t
 
 ## Vulnerability
 
-*Again*, you may be asking how do we use this to go the the `win()` function. The answer lies in **overflowing the stack values until we reach the return address, then
+*Again*, you may be asking how do we use this to go the the `win()` function. The answer lies in **overflowing the stack values by means of** `gets()` (which is vulnerable to buffer overflows) **until we reach the return address, then
 changing it**. But one of the hints were that **EIP (Return Address) is not directly after the end of buffer because of padding and compiler optimizations**. 
 
 ## Stack Visualization
@@ -154,4 +154,5 @@ We see that the **memory address** of `win()` is `0x80483f4`. Now we have *every
 
 * [C Code](https://exploit.education/protostar/stack-four/)
 * [Geeks for Geeks Article on Return Addresses](https://www.geeksforgeeks.org/dsa/how-is-return-address-specified-in-stack/)
+
 
