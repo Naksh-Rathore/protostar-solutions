@@ -166,7 +166,7 @@ Now enter this:
 
 ```bash
 python /tmp/exploit.py | /opt/protostar/bin/stack4
-```'
+```
 
 Result:
 
@@ -181,6 +181,7 @@ The **segfault** at the end is because we **overwritten the saved EBP** to an in
 
 * [C Code](https://exploit.education/protostar/stack-four/)
 * [Geeks for Geeks Article on Return Addresses](https://www.geeksforgeeks.org/dsa/how-is-return-address-specified-in-stack/)
+
 
 
 
