@@ -136,7 +136,7 @@ Program received signal SIGSEGV, Segmentation fault.
 (gdb) 
 ```
 
-Once we continue (`c`), we see that the **return address got overwritten** to `0x5a5a5a5a` (`ZZZZ`) because the **program tried to go to that memory address** which is of course **illegal**. That **checks outs** with the EBP overwrite because `ZZZZ` was **right after** `LLLL` in the input string, which **matches up perfectly with our stack visual** from earlier. 
+Once we continue (`c`), we see that the **return address got overwritten** to `0x5a5a5a5a` (`ZZZZ`) because the **program tried to go to that memory address** which is of course **illegal**. That **checks out** with the EBP overwrite because `ZZZZ` was **right after** `LLLL` in the input string, which **matches up perfectly with our stack visual** from earlier. 
 
 So now we need to get the **memory address** of the `win()` function. Do to that, we use the `p` command in GDB to **print the value of whatever comes after it**.
 
@@ -154,3 +154,4 @@ We see that the **memory address** of `win()` is `0x80483f4`. Now we have *every
 
 * [C Code](https://exploit.education/protostar/stack-four/)
 * [Geeks for Geeks Article on Return Addresses](https://www.geeksforgeeks.org/dsa/how-is-return-address-specified-in-stack/)
+
