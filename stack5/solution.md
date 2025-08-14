@@ -49,7 +49,8 @@ still execute our shellcode.
 
 First, let's **reuse** the **padding** from [stack4](https://github.com/Naksh-Rathore/protostar-solutions/tree/main/stack4/) so we do not have to check what the padding is *again*.
 
-We first need the **return address's** memory address to use as a estimate of the NOP sled address.
+We first need the **return address's** memory address to use as a estimate of the NOP sled address, since we will be putting the NOP sled
+**right after** the return address.
 
 ```bash
 (gdb) break *main+22
@@ -118,6 +119,7 @@ root
 * [/bin/sh ShellCode from ShellStorm](https://shell-storm.org/shellcode/files/shellcode-811.html)
 * [LiveOverflow's Solution on YouTube](https://www.youtube.com/watch?v=HSlhY4Uy8SA)
 * [Wikipedia Article on the NX Bit](https://en.wikipedia.org/wiki/NX_bit)
+
 
 
 
