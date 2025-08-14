@@ -32,7 +32,7 @@ Ok, so now we have some *very* minimal C code with just a `char buffer[64]` and 
 You may be thinking, *how do we do that*. The answer lies in **executing shellcode put on the stack** by abusing `gets()`. Let me explain.
 
 You know how we can **edit the stack** by using a **buffer overflow**? We can also **put values on the stack** and if **EIP points to it**,
-the stack value(s) will **execute**. This is preventable by using a system called **NX**, which stands no **No-Execution**. This system
+the stack value(s) *will* **execute**. This is preventable by using a system called **NX**, which stands no **No-Execution**. This system
 **prevents stack values from being executed**, which is useful to prevent this style of attack.
 
 Now that we know that **the stack is executable**, can we **put shellcode on the stack, then execute** it by **overwriting the return
@@ -118,5 +118,6 @@ root
 * [/bin/sh ShellCode from ShellStorm](https://shell-storm.org/shellcode/files/shellcode-811.html)
 * [LiveOverflow's Solution on YouTube](https://www.youtube.com/watch?v=HSlhY4Uy8SA)
 * [Wikipedia Article on the NX Bit](https://en.wikipedia.org/wiki/NX_bit)
+
 
 
